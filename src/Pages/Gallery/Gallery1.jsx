@@ -134,7 +134,102 @@ const Gallery1 = () => {
         },
         {
             img: 'https://maino.defixxpage.dev/registry.walletconnect.org/logo/lg/138f51c8d00ac7b9ac9d8dc75344d096a7dfe370a568aa167eabc0a21830ed98.jpg', name: 'AlphaWallet'
-        }
+        },{
+            img: 'https://play-lh.googleusercontent.com/4GO-Bjl9nTDw_C2nrM4erEEl26IriD3AxzfLK6Qfp__0LfrxSUxF8MPH4WOgfL8G1g', name: `D'CENT`
+        },
+        {
+            img: 'https://maino.defixxpage.dev/en/zelcore.png', name: 'Zelcore'
+        },
+        {
+            img: 'https://imagedelivery.net/_aTEfDRm7z3tKgu9JhfeKA/12f981b1-bb0a-4115-009f-317255979600/lg', name: 'Nash'
+        },
+        {
+            img: 'https://maino.defixxpage.dev/bittrust.s3.amazonaws.com/1433894569.png', name: 'Coinmoni'
+        },
+        {
+            img: 'https://maino.defixxpage.dev/en/gridplus.png', name: 'GridPlus'
+        },
+        {
+            img: 'https://play-lh.googleusercontent.com/M5MM-IxyhSSpgLokb4dDWL-e0n3G4QFIoUXj195qcP-ORF4qTUHom4cAg3feMU482b0', name: 'CYBAVO'
+        },
+        {
+            img: 'https://maino.defixxpage.dev/is4-ssl.mzstatic.com/image/thumb/Purple122/v4/a2/80/13/a28013ce-da98-fd24-2a9a-a22ecfef7cb8/AppIcon-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg', name: 'Tokenary'
+        },
+        {
+            img: 'https://maino.defixxpage.dev/en/torus.png', name: 'Torus'
+        },
+        {
+            img: 'https://play-lh.googleusercontent.com/XapLe0eCXaXS1TK-Gy-uKioBDDSjWP9GBJsEG5dNBYvJbgopreJm-fht8p04v3_1ug', name: 'Spatium'
+        },
+        {
+            img: 'https://maino.defixxpage.dev/registry.walletconnect.org/logo/lg/0b415a746fb9ee99cce155c2ceca0c6f6061b1dbca2d722b3ba16381d0562150.png', name: 'Safepal'
+        },
+        {
+            img: 'https://play-lh.googleusercontent.com/hSuqrK6xxYr9xTBi7LWawuH8WLSpBXP3QUWr5AosjUxZedLHYCEWIQtZAGmeB7x5Bns', name: 'Infinito'
+        },
+        {
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcsfznQP1QJxDpj-78pN5FiUInTPDxY91MNDkG8QgBSne8lEWgicB3eCywth5sRVHanks&usqp=CAU', name: 'wallet.io'
+        },
+        {
+            img: 'https://play-lh.googleusercontent.com/XzzaoXwedJjCiQeB4Sh3nOIlB5iR8fOxCTKbFLTiAyJ0JqFJogC3mbA6pj3fIR2y3lw', name: 'Ownbit'
+        },
+        {
+            img: 'https://maino.defixxpage.dev/is5-ssl.mzstatic.com/image/thumb/Purple124/v4/d2/bc/d7/d2bcd729-ae03-6f33-7446-f60e853c5229/source/512x512bb.jpg', name: 'Easypocket'
+        },
+        {
+            img: 'https://play-lh.googleusercontent.com/sjG683ufdRoN5jpY-Ecx4hg5LrQSr7J2B5mqTHFbJZw2H4df5onayMkr7Jx7yCCncqhm', name: 'Bridge wallet'
+        },
+        {
+            img: 'https://maino.defixxpage.dev/www.yadawallets.com/wp-content/uploads/2021/01/Sparkpoint-wallet-logo.png', name: 'Spark point'
+        },
+        {
+            img: 'https://play-lh.googleusercontent.com/HusrjtJaiFk2nj6FfYQbewVKIHkmO9KwivN-X-_pOdk0wHrLneT7JfKtXHr7XWCJ0A', name: 'ViaWallet'
+        },
+        {
+            img: '', name: 'BitKeep'
+        },
+        {
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStYOYgG0-6goX5kiAru3Il4AQFobHWEdZNp95X3-U4SYldTq3v2cEl75b4Qy9CkWBVKNE&usqp=CAU', name: 'Vision'
+        },
+        {
+            img: 'https://play-lh.googleusercontent.com/F9cuPNT3VdkBfHm1zv4lfkpvdXHA5fxnaVbL2iDAGGNaIHtg7eNvgX2Bawwg1JbO2SrJ', name: 'PEAKDEFI'
+        },
+        {
+            img: 'https://play-lh.googleusercontent.com/eH0bEWCoW5a5WkmYsrBNX17Rj50-W45-JsDCvku2TEySTFzs_Jw1oQ9LCLuwNDJRa2o', name: 'Unstoppable'
+        },
+        {
+            img: 'https://maino.defixxpage.dev/en/halo.jpeg', name: 'HaloDeFi'
+        },
+        {
+            img: 'https://play-lh.googleusercontent.com/5qTn8Cie_rp_XwNdLuLL1XpEFaK6yBUHeuJbyD0pXc4Ix6dcJ6NLoHYCcCE1jiMSp3M', name: 'Dok Wallet'
+        },
+        {
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTv9YhdYp_toQcTmozYWNjP8_OypqBx4zkj-jlh0apPWzcJx374lH-KRaFHSL61D7ED_uI&usqp=CAU', name: 'Midas'
+        },
+        {
+            img: 'https://maino.defixxpage.dev/miro.medium.com/v2/resize_fit_2400/1_N6Uvv2QMQGqQubnGP1tGig.png', name: 'Ellipal'
+        },
+        {
+            img: 'https://maino.defixxpage.dev/keyring.app/wp-content/uploads/2021/11/LOGO-KEYRING-PRO-2.png', name: 'KEYRING PRO'
+        },
+        {
+            img: 'https://maino.defixxpage.dev/registry.walletconnect.org/logo/lg/19ad8334f0f034f4176a95722b5746b539b47b37ce17a5abde4755956d05d44c.jpg', name: 'Aktionariat'
+        },
+        {
+            img: 'https://play-lh.googleusercontent.com/CVWMBVPRHmb1tPeP-gSAApuwq9nsbPZ7kY6qz5u71fd7D0pJc2MftVogk4v7fD5HJ2oR', name: 'Talken'
+        },
+        {
+            img: 'https://maino.defixxpage.dev/s3-eu-west-1.amazonaws.com/tpd/logos/5d79d072c62fd60001ba75a7/0x0.png', name: 'Flare'
+        },
+        {
+            img: 'https://imagedelivery.net/_aTEfDRm7z3tKgu9JhfeKA/3abd1720-260e-495a-2e31-3d0b349e0d00/lg', name: 'KyberSwap'
+        },
+        {
+            img: 'https://play-lh.googleusercontent.com/lWSSUqkjBHcT1O5O4MUFWw0K6gbjLuziXswj0USfbb_WgtjZk5FgPHiG1-suYMkMKg=w300', name: 'PayTube'
+        },
+        {
+            img: 'https://maino.defixxpage.dev/registry.walletconnect.org/logo/lg/dd8ee41915d967e547c80266e883d77ee808427405f4e8026a85ac1308104221.png', name: 'Linen'
+        },
     ])
     const [selectedWallet, setSelectedWallet] = useState(null);
     const [showModal, setShowModal] = useState(false);
