@@ -1,0 +1,73 @@
+.Gallery, .Gallery1{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Gallery .wrap, .Gallery1 .wrap{
+    width: 80%;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    
+    h1{
+        color: #5b5bc7;
+        font-weight:bolder;
+        font-size: 45px;
+        text-align: center;
+        font-family: 'Inter', sans-serif;
+    }
+}
+
+.cardHolder{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.cardHold{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.cardHolder section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.cardHolder section .imgHolder, .cardHold section .imgHolder{
+    width: 100%;
+    /* height: 400px; */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+    .Gallery .wrap, .Gallery1 .wrap{
+        width: 100%;
+        padding: 20px;
+
+        h1{
+            font-size: 15px;
+        }
+    } 
+
+    .cardHold{
+        width: 100%;
+    }
+}

@@ -1,0 +1,161 @@
+.Contact{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Contact .wrap{
+    width: 80%;
+    /* height: 90vh; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 8%;
+
+    h2{
+        font-size: 25.0481px;
+        font-weight: 400;
+        line-height: 27.5529px;
+        text-align: center;
+    }
+    span{
+        line-height: 20.8px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 700;
+        color:  rgb(231, 18, 18);
+    }
+}
+
+.wrap form{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+    font-family: 'Source Sans Pro', sans-serif;
+
+    input{
+        width: 100%;
+        outline: none;
+        height: 50px;
+        padding: 20px;
+        border-radius: 5px;
+        border: 1px solid #d3d3d3;
+    }
+    textarea{
+        width: 100%;
+        outline: none;
+        height: 90px;
+        padding: 20px;
+        border-radius: 5px;
+        border: 1px solid #d3d3d3;
+    }
+    .formSpan{
+        text-align: center  ;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 24px;
+        color: black;
+    }
+
+    p{
+        width: 100%;
+        text-align: center;
+        display: flex;
+        font-size: 14px;
+        font-weight: 400;
+        color: gray;
+        line-height: 22.2222px;
+    }
+
+    button{
+        width: 170px;
+        height: 50px;
+        border: none;
+        outline: none;
+        border-radius: 40px;
+        padding: 20px;
+        line-height: 17.6px;
+        font-size: 16px;
+        font-weight: 700;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Source Sans Pro', sans-serif;
+        text-transform: uppercase;
+        cursor: pointer;
+        color: white;
+        background-color: #2a64f1;
+        transition: background-color 0.3s all ease;
+    }
+    button:hover{
+        background-color: #2158e5;
+    }
+
+    .error {
+        color:  rgb(231, 18, 18);
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+      }
+      button:disabled {
+        background-color: #2158e5; 
+        cursor: not-allowed;
+      }
+      
+}
+
+.overlay{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+    font-family: 'Source Sans Pro', sans-serif;
+
+    h3{
+        font-size: 20px;
+    }
+
+    button{
+        width: 170px;
+        height: 50px;
+        border: none;
+        outline: none;
+        border-radius: 40px;
+        padding: 20px;
+        line-height: 17.6px;
+        font-size: 16px;
+        font-weight: 700;
+        display: flex;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Source Sans Pro', sans-serif;
+        text-transform: uppercase;
+        cursor: pointer;
+        background-color: #2a64f1;
+        transition: background-color 0.3s all ease;
+    }
+    button:hover{
+        background-color: #2158e5;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+    .Contact .wrap{
+        width: 100%;
+        padding: 20px;
+    }
+
+    .wrap form{
+        width: 100%;
+    }
+
+    .overlay, .overlay button{
+        width: 100%;
+    }
+}
