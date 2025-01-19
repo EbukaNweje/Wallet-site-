@@ -60,9 +60,9 @@ const Gallery = () => {
                 {
                     box.length == 0 ? <Loading/> :
                     (
-                        box.map((e) =>(
+                        box.map((e, index) =>(
                             <section>
-                                <div className="imgHolder">
+                                <div className="imgHolder" key={index}>
                                     <img src={e?.img} alt="Loading..." />
                                 </div>
                                 {/* <h2>RECTIFICATION</h2> */}
